@@ -2,8 +2,16 @@
 
 // Task 1: Declare a variable called `globalVar` with the value "I am global".
 
+var globalVar = "I am global"
+
 // Task 2: Create a function called `testScope` that declares a variable called
 // `localVar` with the value "I am local".
+
+function testScope (){
+    let localVar = "I am local";
+};
+
+
 
 // Task 3: Inside `testScope`, print both `globalVar` and `localVar`.
 

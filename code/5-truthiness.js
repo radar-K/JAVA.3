@@ -32,7 +32,7 @@ for(i = 0; i < values.length; i++){
 
 // Task 5. Loop through the `values` array using a while-loop and call `checkTruthiness` on each value.
 let i = 0;
-while( i < value.length){
+while(i < values.length){
     checkTruthiness(values[i]);
     i++;
 };
