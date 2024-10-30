@@ -31,8 +31,8 @@ for(i = 0; i < values.length; i++){
 };
 
 // Task 5. Loop through the `values` array using a while-loop and call `checkTruthiness` on each value.
-let i = 0;
-while(i < values.length){
-    checkTruthiness(values[i]);
-    i++;
+let j = 0;
+while(j < values.length){
+    checkTruthiness(values[j]);
+    j++;
 };

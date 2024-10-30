@@ -1,0 +1,45 @@
+<script>
+    alert(`Välkommen till hänga gubbe!, Gissa ordet och rädda hänga gubben!`);
+    
+    const words = [    
+    "smörgåstårta",
+    "snurrig",
+    "kurragömma",
+    "vimsig",
+    "plopp",
+    "knasig",
+    "tjosanhejsan"]
+
+    function getRandomWord(){
+        const randomIndex = Math.floor(Math.random() * words.length) 
+        return words[randomIndex];
+    };
+    const selectedWord = getRandomWord();
+
+    let hiddenWord = "";
+    for(i = 0; i < selectedWord.length; i++){
+        hiddenWord += "_ ";
+    };
+
+    let userGuess = prompt(`Ordet är: ${hiddenWord}. Gissa på en bokstav`);
+
+    if (userGuess === hiddenWord){};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
