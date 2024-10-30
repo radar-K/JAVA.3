@@ -1,29 +1,62 @@
 <script>
-    alert(`Välkommen till hänga gubbe!, Gissa ordet och rädda hänga gubben!`);
-    
-    const words = [    
+alert(`Välkommen till hänga gubbe! Gissa ordet och rädda hänga gubben!`);
+
+const words = [
     "smörgåstårta",
     "snurrig",
     "kurragömma",
     "vimsig",
     "plopp",
     "knasig",
-    "tjosanhejsan"]
+    "tjosanhejsan"
+];
 
-    function getRandomWord(){
-        const randomIndex = Math.floor(Math.random() * words.length) 
-        return words[randomIndex];
-    };
-    const selectedWord = getRandomWord();
+let userGuesses = 0;
+const maxGuesses = 6;
 
-    let hiddenWord = "";
-    for(i = 0; i < selectedWord.length; i++){
-        hiddenWord += "_ ";
-    };
+function getRandomWord() {
+    const randomIndex = Math.floor(Math.random() * words.length);
+    return words[randomIndex];
+}
+const selectedWord = getRandomWord();
 
-    let userGuess = prompt(`Ordet är: ${hiddenWord}. Gissa på en bokstav`);
+// Skapa ett array för dolda bokstäver
+let hiddenWordArray = Array(selectedWord.length).fill("_");
 
-    if (userGuess === hiddenWord){};
+while (userGuesses < maxGuesses && hiddenWordArray.includes("_")) {
+    // Visa dolda ordet och gissningar kvar
+    let hiddenWord = hiddenWordArray.join(" ");
+    let userGuess = prompt(`Ordet är: ${hiddenWord}. Du har ${maxGuesses - userGuesses} försök kvar. Gissa på en bokstav:`);
+
+    // Kontrollera om användaren avbröt
+    if (userGuess === null || userGuess.length !== 1) {
+        alert("Vänligen gissa endast en bokstav.");
+        continue;
+    }
+
+    const letterExistsInWord = selectedWord.includes(userGuess);
+
+    if (letterExistsInWord) {
+        // Uppdatera hiddenWordArray med rätt bokstav(er)
+        for (let i = 0; i < selectedWord.length; i++) {
+            if (selectedWord[i] === userGuess) {
+                hiddenWordArray[i] = userGuess;
+            }
+        }
+        alert(`Rätt gissat!`);
+    } else {
+        userGuesses++;
+        alert(`Fel gissat! Försök kvar: ${maxGuesses - userGuesses}`);
+    }
+}
+
+// Kontrollera om användaren har vunnit eller förlorat
+if (!hiddenWordArray.includes("_")) {
+    alert(`Grattis! Du gissade rätt ord: ${selectedWord}`);
+} else {
+    alert(`Tyvärr, inga försök kvar. Ordet var: ${selectedWord}`);
+}
+
 
 
 
